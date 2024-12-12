@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Agradecimiento y Felices Fiestas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Felices Fiestas!</h1>
+        <div class="card">
+            <p>Estimado/a Cliente,</p>
+            <p>En **Partes Eléctricas BYB**, queremos aprovechar esta ocasión para agradecerte por todo tu apoyo y confianza a lo largo de este año. Ha sido un placer servirte y esperamos seguir colaborando contigo en el futuro.</p>
+            <p>Te deseamos una <strong>¡Feliz Navidad!</strong> y un <strong>Próspero Año Nuevo</strong>, lleno de salud, felicidad y éxito. ¡Que todos tus deseos se hagan realidad!</p>
+            <p>Con cariño, <br><strong>Partes Eléctricas BYB</strong></p>
+        </div>
+
+        <div class="countdown">
+            <p>Cuenta regresiva para la Navidad:</p>
+            <p id="countdown-christmas"></p>
+
+            <p>Cuenta regresiva para el Año Nuevo:</p>
+            <p id="countdown-newyear"></p>
+        </div>
+
+        <div class="iframe-container">
+            <h2>¡Disfruta del video!</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vvTOScNMQB4?si=gx9CmWh_3MDxIiHH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Fecha de Navidad y Año Nuevo
+        const christmasDate = new Date("Dec 25, 2024 00:00:00").getTime();
+        const newYearDate = new Date("Jan 1, 2025 00:00:00").getTime();
+
+        // Función para actualizar la cuenta regresiva
+        function updateCountdown() {
+            const now = new Date().getTime();
+
+            // Cálculos para la Navidad
+            const distanceToChristmas = christmasDate - now;
+            const daysToChristmas = Math.floor(distanceToChristmas / (1000 * 60 * 60 * 24));
+            const hoursToChristmas = Math.floor((distanceToChristmas % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesToChristmas = Math.floor((distanceToChristmas % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsToChristmas = Math.floor((distanceToChristmas % (1000 * 60)) / 1000);
+
+            // Cálculos para el Año Nuevo
+            const distanceToNewYear = newYearDate - now;
+            const daysToNewYear = Math.floor(distanceToNewYear / (1000 * 60 * 60 * 24));
+            const hoursToNewYear = Math.floor((distanceToNewYear % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesToNewYear = Math.floor((distanceToNewYear % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsToNewYear = Math.floor((distanceToNewYear % (1000 * 60)) / 1000);
+
+            // Actualizar el contenido de la cuenta regresiva para la Navidad
+            document.getElementById("countdown-christmas").innerHTML =
+                daysToChristmas + "d " + hoursToChristmas + "h " +
+                minutesToChristmas + "m " + secondsToChristmas + "s";
+
+            // Actualizar el contenido de la cuenta regresiva para el Año Nuevo
+            document.getElementById("countdown-newyear").innerHTML =
+                daysToNewYear + "d " + hoursToNewYear + "h " +
+                minutesToNewYear + "m " + secondsToNewYear + "s";
+        }
+
+        // Llamar la función de cuenta regresiva cada segundo
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
